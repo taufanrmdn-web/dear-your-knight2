@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dear, Your Knight</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Georgia", serif;
+            background: linear-gradient(to bottom, #1e1e2f, #2c2c44);
+            color: #f1f1f1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 800px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 12px;
+            line-height: 1.8;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            display: none; /* awalnya tersembunyi */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: normal;
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+            opacity: 0; /* awalnya tersembunyi */
+            transition: opacity 1s;
+        }
+
+        .signature {
+            margin-top: 40px;
+            text-align: right;
+            font-style: italic;
+            opacity: 0; /* awalnya tersembunyi */
+            transition: opacity 1s;
+        }
+
+        #openButton {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #6c63ff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        #openButton:hover {
+            background-color: #5548c8;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="openButton">Buka Surat</button>
+
+    <div class="container" id="letter">
+        <h1>Dear, Your Knight</h1>
+
+        <p>Untuk orang yang sudah mempercayai seorang yang mungkin sudah membuatnya sakit berkali-kali, sepertinya kata maaf tidak akan bisa mengobatinya kali ini.</p>
+
+        <p>Terima kasih yang sebesar-besarnya untukmu wahai dewi pemberi senyum indah. Tapi sayang, ksatriamu ini tidak akan bisa mengikutimu sampai ke kayangan sana.</p>
+
+        <p>Jadi aku hanya bisa menitipkan harapan ini kepadamu, semoga kau dapat yang jauh lebih baik dariku, di suatu tempat entah itu dalam waktu cepat atau lambat.</p>
+
+        <p>Terima kasih selama ini kamu sudah menjadi payungku di kala hujan, air di kala kemarau, dan angin segar di kala panas matahari menyengat.</p>
+
+        <p>Kau selalu menjadi sebuah percikan api kecil yang membakar semangat menjadi berkobar, layaknya bom yang meledak.</p>
+
+        <p>Kau juga dapat menjadi air yang tenang setelah mendapat semua tekanan yang dunia beri padamu.</p>
+
+        <p>Sehat-sehat, orang baik.</p>
+
+        <div class="signature">— dear, your knight</div>
+    </div>
+
+    <!-- Musik Latar -->
+    <audio id="backgroundMusic" loop>
+        <source src="musikmu.mp3" type="audio/mpeg">
+        Browsermu tidak mendukung audio.
+    </audio>
+
+    <script>
+        const button = document.getElementById('openButton');
+        const letter = document.getElementById('letter');
+        const music = document.getElementById('backgroundMusic');
+
+        button.addEventListener('click', () => {
+            // Tampilkan container
+            letter.style.display = 'block';
+            button.style.display = 'none';
+
+            // Mulai musik
+            music.play();
+
+            // Ambil semua elemen paragraf dan header
+            const elements = letter.querySelectorAll('h1, p, .signature');
+
+            // Tampilkan satu per satu
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = 1;
+                }, index * 2000); // setiap elemen muncul 2 detik
+            });
+        });
+    </script>
+
+</body>
+</html>
